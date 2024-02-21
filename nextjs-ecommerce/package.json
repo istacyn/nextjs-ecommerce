@@ -2,6 +2,7 @@
   "name": "nextjs-ecommerce",
   "version": "0.1.0",
   "private": true,
+  "prettier": "./prettier.config.mjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
