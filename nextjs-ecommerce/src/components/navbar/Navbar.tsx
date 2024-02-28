@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../public/images/logo.png";
+import logo from "../../../public/images/logo.png";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCart } from "@/lib/db/cart";
@@ -15,22 +15,24 @@ async function searchProducts(formData: FormData) {
   }
 }
 
-export default function Navbar() {
+export default async function Navbar() {
   const cart = await getCart();
 
   return (
-    <nav className="bg-base-100">
-      <div className="max-w-7x1 navbar m-auto flex-col justify-between sm:flex-row">
-        <section className="flex items-center">
+    <div className="bg-base-100">
+      <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row items-center justify-between">
+        <div className="flex items-center">
           <Link href="/" className="btn btn-ghost text-xl">
-            <Image src={logo} height={70} width={70} alt="Zuri Logo" />
+            <Image src={logo} height={40} width={40} alt="Zuri Logo" priority />
           </Link>
-        </section>
-        <section className="flex items-center space-x-16">
+        </div>
+
+        <div className="hidden flex-grow justify-center space-x-16 sm:flex">
           <Link href="/shop">Shop</Link>
           <Link href="/about">About</Link>
-        </section>
-        <section className="flex items-center space-x-4">
+        </div>
+
+        <div className="flex items-center space-x-4">
           <form action={searchProducts}>
             <div className="form-control">
               <input
@@ -41,8 +43,8 @@ export default function Navbar() {
             </div>
           </form>
           <ShoppingCartButton cart={cart} />
-        </section>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 }

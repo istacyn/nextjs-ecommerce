@@ -1,7 +1,7 @@
 "use client";
 
-import { formatPrice } from "@/lib/formatPrice";
-import { ShoppingCart } from "../../lib/db/cart";
+import { formatPrice } from "@/lib/format";
+import { ShoppingCart } from "@/lib/db/cart";
 import Link from "next/link";
 
 interface ShoppingCartButtonProps {
@@ -44,9 +44,9 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
         className="card dropdown-content card-compact z-30 mt-3 w-52 bg-base-100 shadow"
       >
         <div className="card-body">
-          <span className="text-lg font-bold">{cart?.size || 0}</span>
+          <span className="text-lg font-bold">{cart?.size || 0} Items</span>
           <span className="text-info">
-            Subtoral: {formatPrice(cart?.subtotal || 0)}
+            Subtotal: {formatPrice(cart?.subtotal || 0)}
           </span>
           <div className="card-actions">
             <Link
@@ -54,7 +54,7 @@ export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
               className="btn btn-primary btn-block"
               onClick={closeDropdown}
             >
-              ViewCart
+              View cart
             </Link>
           </div>
         </div>
