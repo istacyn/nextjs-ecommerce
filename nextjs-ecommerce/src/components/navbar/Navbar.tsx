@@ -4,6 +4,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCart } from "@/lib/db/cart";
 import ShoppingCartButton from "./ShoppingCartButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import UserMenuButton from "./UserMenuButton";
 
 async function searchProducts(formData: FormData) {
   "use server";
@@ -16,11 +19,12 @@ async function searchProducts(formData: FormData) {
 }
 
 export default async function Navbar() {
+  const session = await getServerSession(authOptions);
   const cart = await getCart();
 
   return (
     <div className="bg-base-100">
-      <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row items-center justify-between">
+      <div className="navbar m-auto max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row">
         <div className="flex items-center">
           <Link href="/" className="btn btn-ghost text-xl">
             <Image src={logo} height={40} width={40} alt="Zuri Logo" priority />
@@ -43,6 +47,7 @@ export default async function Navbar() {
             </div>
           </form>
           <ShoppingCartButton cart={cart} />
+          <UserMenuButton session={session} />
         </div>
       </div>
     </div>
