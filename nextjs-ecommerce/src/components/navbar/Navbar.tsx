@@ -23,7 +23,7 @@ export default async function Navbar() {
   const cart = await getCart();
 
   return (
-    <div className="bg-base-100">
+    <div className="bg-body">
       <div className="navbar m-auto max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row">
         <div className="flex items-center">
           <Link href="/" className="btn btn-ghost text-xl">
@@ -31,8 +31,8 @@ export default async function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden flex-grow justify-center space-x-16 sm:flex">
-          <Link href="/shop">Shop</Link>
+        <div className="hidden flex-grow justify-center space-x-16 sm:flex text-[#bd7d5c] font-bold">
+          <Link href="/shop" className="">Shop</Link>
           <Link href="/about">About</Link>
         </div>
 

@@ -19,7 +19,7 @@ export default async function Home() {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-20 text-5xl font-bold">
-              Timeless Treasures, Modern Elegance
+              Timeless Treasures,<br /> Modern Elegance
             </h1>
             <Link href="/shop" className="btn btn-primary mt-10">
               Shop Now
@@ -53,7 +53,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="hero min-h-screen bg-neutral">
+      <section className="hero min-h-screen bg-secondary">
         <div className="hero-content flex-col lg:flex-row">
           <h2 className="mb-10 text-4xl font-bold">New Collection</h2>
           <div className="grid grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-4">
