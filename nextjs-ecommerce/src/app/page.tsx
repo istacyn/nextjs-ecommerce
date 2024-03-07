@@ -15,20 +15,20 @@ export default async function Home() {
         className="hero min-h-screen"
         style={{ backgroundImage: `url("/images/hero.png")` }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className="hero-overlay bg-opacity-50"></div>
+        <div className="hero-content text-center text-[#5C3A1D]">
           <div className="max-w-md">
             <h1 className="mb-20 text-5xl font-bold">
               Timeless Treasures,<br /> Modern Elegance
             </h1>
-            <Link href="/shop" className="btn btn-primary mt-10">
+            <Link href="/shop" className="btn btn-primary hover:btn-primary-hover mt-10">
               Shop Now
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="hero min-h-screen bg-base-200">
+      <section className="hero min-h-screen bg-base-100">
         <div className="hero-content flex-col lg:flex-row">
           <Image
             src="/images/about.png"
@@ -37,7 +37,7 @@ export default async function Home() {
             height={800}
             className="w-full max-w-sm rounded-lg shadow-2xl"
           />
-          <div>
+          <div className="text-[#5C3A1D]">
             <h1 className="text-5xl font-bold">Meet Zuri</h1>
             <p className="py-6">
               Welcome to Zuri, your exquisite destination for timeless elegance
@@ -55,7 +55,7 @@ export default async function Home() {
 
       <section className="hero min-h-screen bg-secondary">
         <div className="hero-content flex-col lg:flex-row">
-          <h2 className="mb-10 text-4xl font-bold">New Collection</h2>
+          <h2 className="mb-10 text-4xl font-bold text-[#808080]">New Collection</h2>
           <div className="grid grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-4">
             {newProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
