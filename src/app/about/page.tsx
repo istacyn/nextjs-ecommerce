@@ -35,7 +35,7 @@ export default function About() {
           <div className="text-[#808080]">
             <h3 className="text-5xl font-bold">Unveiling Elegance: Crafting Timeless Stories in Gold</h3>
             <p className="py-6">
-            Welcome to a realm where brilliance meets sophistication, where each piece of gold jewelry tells a story of timeless elegance. We are not just purveyors of gold; we are curators of moments, creators of cherished memories. This is not merely about jewelry; it's about a statement, a reflection of the modern woman's extraordinary journey.
+            Welcome to a realm where brilliance meets sophistication, where each piece of gold jewelry tells a story of timeless elegance. We are not just purveyors of gold; we are curators of moments, creators of cherished memories. This is not merely about jewelry; it&apos;s about a statement, a reflection of the modern woman&apos;s extraordinary journey.
             </p>
           </div>
           <Image
