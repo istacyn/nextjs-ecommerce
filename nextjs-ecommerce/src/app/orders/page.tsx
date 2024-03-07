@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Orders - Zuri",
+  title: "Zuri - Orders",
 }
 
 export default async function OrdersPage() {

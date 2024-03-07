@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Zuri - About us",
+}
+
 export default function About() {
   return (
     <article className="flex min-h-screen flex-col items-center">

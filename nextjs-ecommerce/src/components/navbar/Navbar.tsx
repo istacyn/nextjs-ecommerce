@@ -31,7 +31,7 @@ export default async function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden flex-grow justify-center space-x-16 sm:flex text-[#bd7d5c] font-bold">
+        <div className="flex-grow justify-center space-x-16 sm:flex text-[#bd7d5c] font-bold">
           <Link href="/shop" className="">Shop</Link>
           <Link href="/about">About</Link>
         </div>
