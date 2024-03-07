@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import FormSubmitButton from "@/components/FormSubmitButton";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 
 export const metadata: Metadata = {
   title: "Add Product",

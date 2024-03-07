@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { submitFormData } from "./actions";
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -13,14 +21,14 @@ export default function ContactUs() {
   });
 
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
@@ -55,6 +63,7 @@ export default function ContactUs() {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
+            required
           />
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none"
@@ -63,6 +72,7 @@ export default function ContactUs() {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -73,6 +83,7 @@ export default function ContactUs() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none"
@@ -81,6 +92,7 @@ export default function ContactUs() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -90,6 +102,7 @@ export default function ContactUs() {
             name="message"
             value={formData.message}
             onChange={handleChange}
+            required
           ></textarea>
         </div>
         <div className="flex items-center justify-between">
