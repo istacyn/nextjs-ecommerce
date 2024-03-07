@@ -110,7 +110,6 @@ export async function mergeAnonymousCartIntoUserCart(userId: string) {
           items: {
             createMany: {
               data: mergedCartItems.map((item) => ({
-                cartId: userCart.id,
                 productId: item.productId,
                 quantity: item.quantity,
               })),
