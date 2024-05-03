@@ -29,7 +29,7 @@ export default function CartElement({
   return (
     <div>
       <div className="flex flex-wrap items-center gap-3">
-        <Image
+        <Image 
           src={product.imageUrl}
           alt={product.name}
           width={200}

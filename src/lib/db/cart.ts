@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 // Database operations on the cart
-
+// Define types for cart with products and cart items with products
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } };
 }>;
@@ -19,21 +19,25 @@ export type ShoppingCart = CartWithProducts & {
   subtotal: number;
 };
 
+// Function to create a new cart
 export async function createCart(): Promise<ShoppingCart> {
   const session = await getServerSession(authOptions);
 
   let newCart: Cart;
 
+  // If user is logged in, create a new cart for the user
   if (session) {
     newCart = await prisma.cart.create({
       data: { userId: session.user.id },
     });
   } else {
+    // If user is not logged in, create an anonymous cart
     newCart = await prisma.cart.create({
       data: {},
     });
 
-    // Add encryption
+    // TODO: Add encryption to cart Id and cookie
+    // Track anonymous carts
     cookies().set("localCartId", newCart.id);
   }
 
@@ -45,17 +49,20 @@ export async function createCart(): Promise<ShoppingCart> {
   };
 }
 
+// Function to get the current cart
 export async function getCart(): Promise<ShoppingCart | null> {
   const session = await getServerSession(authOptions);
 
   let cart: CartWithProducts | null = null;
 
+  // If user is logged in, get the user's cart
   if (session) {
     cart = await prisma.cart.findFirst({
       where: { userId: session.user.id },
       include: { items: { include: { product: true } } },
     });
   } else {
+    // If user is not logged in, get the anonymous cart
     const localCartId = cookies().get("localCartId")?.value;
     cart = localCartId
       ? await prisma.cart.findUnique({
@@ -79,6 +86,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
   };
 }
 
+// Function to merge an anonymous cart into a user's cart
 export async function mergeAnonymousCartIntoUserCart(userId: string) {
   const localCartId = cookies().get("localCartId")?.value;
 
@@ -141,6 +149,7 @@ export async function mergeAnonymousCartIntoUserCart(userId: string) {
   });
 }
 
+// Function to merge cart items
 function mergeCartItems(...cartItems: CartItem[][]): CartItem[] {
   return cartItems.reduce((acc, items) => {
     items.forEach((item) => {

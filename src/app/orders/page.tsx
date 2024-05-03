@@ -33,14 +33,16 @@ export default async function OrdersPage() {
               <div className="order-image flex-none mr-4">
                 <Image
                   src={order.items[0]?.product.imageUrl}
-                  alt="Order"
+                  alt="Order image"
+                  width={800}
+                  height={600}
                   className="w-16 h-16 object-cover rounded"
                 />
               </div>
               {/* Order Details */}
               <div className="order-details flex-1">
-                <p className="text-lg font-semibold">Order Name: {order.items[0]?.product.name}</p>
-                <p className="text-gray-600">Order ID: {order.id}</p>
+                <p className="text-lg font-semibold">{order.items[0]?.product.name}</p>
+                <p className="text-gray-600">Order {order.id}</p>
                 <p className="text-gray-600">Delivery Date: {order.deliveryDate.toDateString()}</p>
                 {/* Additional details for delivery status */}
                 <p className="text-gray-600">Delivery Status: {order.orderStatus}</p>
@@ -59,7 +61,6 @@ export default async function OrdersPage() {
     );
   } catch (error) {
     console.error('Error fetching orders:', error);
-    // You may want to handle errors appropriately, e.g., display an error message
     return (
       <div className="container mx-auto mt-8">
         <p className="text-red-500">Error fetching orders. Please try again later.</p>

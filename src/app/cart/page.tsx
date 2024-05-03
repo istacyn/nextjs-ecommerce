@@ -2,6 +2,7 @@ import { getCart } from "@/lib/db/cart";
 import CartElement from "./CartElement";
 import { setProductQty } from "./actions";
 import { formatPrice } from "@/lib/format";
+import CheckoutButton from "./CheckoutButton";
 
 export const metadata = {
   title: "Zuri- Cart",
@@ -24,7 +25,7 @@ export default async function CartPage() {
         <p className="mb-3 font-bold">
           Total: {formatPrice(cart?.subtotal || 0)}
         </p>
-        <button className="btn btn-primary sm:w-[200px]">CHECKOUT</button>
+        <CheckoutButton cartItems={cart?.items || []}/>
       </div>
     </div>
   );
